@@ -65,6 +65,13 @@ function DesktopNavbar({ user }) {
                 <div className="absolute top-full left-0 flex flex-col mt-4 min-w-[180px] rounded-md shadow-xl bg-gradient-to-b from-indigo-500 to-purple-600 text-white z-50 border border-indigo-400 animate-slideFadeIn">
                   {" "}
                   <a
+                    href="/athletes/"
+                    className="px-4 py-2 hover:bg-purple-700 hover:text-yellow-300 transition-colors rounded-md"
+                  >
+                    {" "}
+                    View All Athletes{" "}
+                  </a>{" "}
+                  <a
                     href="/athletes/add"
                     className="px-4 py-2 hover:bg-purple-700 hover:text-yellow-300 transition-colors rounded-md"
                   >
@@ -72,11 +79,11 @@ function DesktopNavbar({ user }) {
                     Add Athlete{" "}
                   </a>{" "}
                   <a
-                    href="/athletes/list"
+                    href="/athletes/search"
                     className="px-4 py-2 hover:bg-purple-700 hover:text-yellow-300 transition-colors rounded-md"
                   >
                     {" "}
-                    Athlete List{" "}
+                    Search Athlete{" "}
                   </a>{" "}
                   <a
                     href="/athletes/stats"

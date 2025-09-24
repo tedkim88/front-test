@@ -1,9 +1,10 @@
 import React from 'react'
 
-function ManageAthletes() {
+function ViewAllAthletes() {
   return (
-    <div>Manage Athletes</div>
+    //Jaxsen
+    <div>View All Athletes</div>
   )
 } 
 
-export default ManageAthletes 
+export default ViewAllAthletes 

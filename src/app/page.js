@@ -5,21 +5,20 @@ import Image from "next/image";
 
 export default function Home() {
   const totalImages = 16; // total number of images
-  const batchSize = 4;   // the number of pictures to show at once
+  const batchSize = 4; // the number of pictures to show at once
 
-  const [startIndex, setStartIndex] = useState(0); // 
+  const [startIndex, setStartIndex] = useState(0); //
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStartIndex((prev) => (prev + batchSize) % totalImages); // 
+      setStartIndex((prev) => (prev + batchSize) % totalImages); //
     }, 4000);
 
     return () => clearInterval(interval);
   }, []);
 
-  
   const imagesToShow = Array.from({ length: batchSize }, (_, i) => {
-    return ((startIndex + i) % totalImages) + 1; // 
+    return ((startIndex + i) % totalImages) + 1; //
   });
 
   return (
@@ -56,7 +55,7 @@ export default function Home() {
 
       <div className="mt-8 animate-slideFadeIn">
         <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-indigo-700 transition">
-          Get Started
+          <a href="/about">About LLD Sports</a>
         </button>
       </div>
     </div>
