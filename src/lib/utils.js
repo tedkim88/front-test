@@ -8,7 +8,7 @@ export function cn(...inputs) {
 
 // utils.js
 export function searchAthletes(athletes, { id, name }) {
-  if (id) {
+  if (id !== null && id !== undefined) {
    //search by id
     return athletes.filter((athlete) => athlete.id === id);
   } else if (name) {

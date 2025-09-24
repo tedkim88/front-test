@@ -27,7 +27,7 @@ function MobileNavbar({ user }) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
-  const [showNotifications, setShowNotifications] = useState(false);
+  const [showAthletes, setShowAthletes] = useState(false);
 
   const username = user?.username ?? user?.email?.split("@")[0] ?? "unknown";
   console.log(user);
@@ -81,63 +81,50 @@ function MobileNavbar({ user }) {
 
                 <Button
                   variant="ghost"
-                  className="flex items-center gap-3 justify-between w-full"
-                  onClick={() => setShowNotifications(!showNotifications)}
-                >
-                  <div className="flex items-center gap-3">
-                    <BellIcon className="w-4 h-4" />
-                    Notifications
-                  </div>
-                  <ChevronDownIcon
-                    className={`w-4 h-4 transition-transform ${
-                      showNotifications ? "rotate-180" : "rotate-0"
-                    }`}
-                  />
-                </Button>
-                {/* <Button
-                  variant="ghost"
-                  className="flex items-center gap-3 justify-start"
-                  asChild
-                >
-                  <Link href="/notifications">
-                    <BellIcon className="w-4 h-4" />
-                    Notifications
-                  </Link>
-                </Button> */}
-
-                {showNotifications && (
-                  <div className="ml-6 mt-2 flex flex-col space-y-1 animate-slideFadeIn">
-                    <Link
-                      href="/notifications/messages"
-                      className="text-sm hover:underline"
-                    >
-                      Messages
-                    </Link>
-                    <Link
-                      href="/notifications/alerts"
-                      className="text-sm hover:underline"
-                    >
-                      Alerts
-                    </Link>
-                    <Link
-                      href="/notifications/followers"
-                      className="text-sm hover:underline"
-                    >
-                      Followers
-                    </Link>
-                  </div>
-                )}
-
-                <Button
-                  variant="ghost"
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
                   <Link href="/athletes">
                     <BellIcon className="w-4 h-4" />
-                    Manage Athletes
+                    Notifications
                   </Link>
                 </Button>
+
+                <Button
+                  variant="ghost"
+                  className="flex items-center gap-3 justify-between w-full"
+                  onClick={() => setShowAthletes(!showAthletes)}
+                >
+                  <div className="flex items-center gap-3">
+                    <BellIcon className="w-4 h-4" />
+                    Manage Athletes
+                  </div>
+                  <ChevronDownIcon
+                    className={`w-4 h-4 transition-transform ${
+                      showAthletes ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </Button>
+
+                {showAthletes && (
+                  <div className="ml-6 mt-2 flex flex-col space-y-1 animate-slideFadeIn">
+                    <Link href="/athletes" className="text-sm hover:underline">
+                      View All Athletes
+                    </Link>
+                    <Link
+                      href="/athletes/add"
+                      className="text-sm hover:underline"
+                    >
+                      Add Athlete
+                    </Link>
+                    <Link
+                      href="/athletes/search"
+                      className="text-sm hover:underline"
+                    >
+                      Search Athlete
+                    </Link>
+                  </div>
+                )}
 
                 <SignOutButton>
                   <Button
