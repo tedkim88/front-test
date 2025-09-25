@@ -6,18 +6,19 @@ import { toast } from "react-hot-toast";
 import mockAthletes from "@/lib/mockdb.js";
 import Link from "next/link";
 
-
 export default function AthletesList() {
   const [searchId, setSearchId] = useState("");
   const [searchName, setSearchName] = useState("");
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const clearInput = () => {
     setSearchId("");
     setSearchName("");
     setResults([]);
   };
-  const handleSearch = () => {
+
+  const handleSearch = async () => {
     if (!searchId && !searchName) {
       toast.error("Please Enter ID or Name");
       return;
@@ -30,9 +31,14 @@ export default function AthletesList() {
         id = parsed;
       } else {
         toast.error("ID should be a number!!");
+        setLoading(false);
         return;
       }
     }
+
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    //this is a loading spinner testing. we are going to change this when we have the api call data from backend team.
 
     const res = searchAthletes(mockAthletes, {
       id: searchId ? Number(searchId) : null,
@@ -43,9 +49,19 @@ export default function AthletesList() {
       toast.error("There is no data matching your search!");
     } else {
       setResults(res);
-      0;
     }
+
+    setLoading(false); //
   };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center h-screen p-4 space-y-2">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <span className="text-lg font-medium text-yellow-300">Loading...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-80px)]">
