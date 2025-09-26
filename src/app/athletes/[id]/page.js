@@ -9,6 +9,8 @@ export default function AthleteDetailsWithChart() {
   const params = useParams();
   const athlete = searchAthlete(mockAthletes, params.id);
 
+
+console.log(isSignedIn, user)
   if (!athlete)
     return (
       <div className="text-center text-red-500 mt-10 text-lg">
