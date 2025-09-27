@@ -1,10 +1,20 @@
+"use client"
 
-
-const IntroCard = ({type}) => {
+const IntroCard = ({type, showDescription, onClick}) => {
     return (
-        <div className='rounded-2xl odd:bg-purple-400 even:bg-yellow-500 p-12 text-xl'>
+
+        <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onClick?.(); }} 
+            className={`
+                w-40 h-30
+                rounded-2xl
+                bg-orange-400
+                transition-transform hover:scale-110 
+                ${showDescription ? "scale-110" : ""}
+            `}>
             {type}
-        </div>
+        </button>
     )
 }
 
